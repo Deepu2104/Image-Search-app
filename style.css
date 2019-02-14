@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.body{
+background-color:#eee;
+background-image: linear-gradient(to right, rgba(138, 137, 137, 0.548),rgba(168, 168, 168, 0.589)),url(./nat-8.jpg);
+}
+.container_search{
+    text-align: center;
+    margin-top:5%;
+}
+.img{
+width: 395px;
+height: 392px;
+float: left;
+margin:30px;
+border-radius: 7%;
+}
+.text-btn{
+    font-size: 25px;
+}
+.submit-btn{
+    font-size: 25px;
+}
+@media screen and(max-width:455px){
+    .img {
+        width: 390px;
+        height: 355px;
+        float: left;
+        margin: 16px;
+        border-radius: 7%;
+    }
+}
