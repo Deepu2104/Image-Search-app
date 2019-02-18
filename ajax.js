@@ -13,7 +13,6 @@ async function controlSearch(){
     clearText()
     clearImages() 
     await state.gotData.getData(document.querySelector('.text-btn').value)
-    console.log(state)
     renderImage(state.gotData.fetchData.results[0].urls)
     renderImage(state.gotData.fetchData.results[1].urls)
     renderImage(state.gotData.fetchData.results[2].urls)
