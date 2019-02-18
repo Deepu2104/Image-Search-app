@@ -1,9 +1,6 @@
-//new key 811ec0c4b2d4d51329e93cdde24b72b7140809820aacb7942c2b82827afac5ba
-//old key dbb6f774ba6ea7046c44d9a0749307bb08f2f5f24c4d1018741dd7b62127bd63
-//https://api.unsplash.com/search/photos/?page=1&per_page=10&query=${query}&client_id=${key}
 class Search{
     async getData(Query){
-        let key = "dbb6f774ba6ea7046c44d9a0749307bb08f2f5f24c4d1018741dd7b62127bd63"
+        let key = "my key"
         let res = await fetch(`https://api.unsplash.com/search/photos/?page=1&per_page=10&query=${Query}&client_id=${key}`)
         let data = await res.json();
         this.fetchData = await data;
