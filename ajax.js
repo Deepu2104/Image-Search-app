@@ -1,46 +1,47 @@
+//you just need key to work this code..and download images in hd quality
+//https://api.unsplash.com/search/photos/?page=1&per_page=10&query=${query}&client_id=${key}
 class Search{
     async getData(Query){
-        let key = "my key"
-        let res = await fetch(`https://api.unsplash.com/search/photos/?page=1&per_page=10&query=${Query}&client_id=${key}`)
+        let key = "key"
+        let res = await fetch(`https://api.unsplash.com/search/photos/?page=10&per_page=25&query=${Query}&client_id=${key}`)
         let data = await res.json();
-        this.fetchData = await data;
+        this.fetchData = data.results;
+        console.log(data.results)
     }
 }
 
 var state = {};
 async function controlSearch(){
     state.gotData = new Search()
+    clearImages()
     await state.gotData.getData(document.querySelector('.text-btn').value)
-    renderImage(state.gotData.fetchData.results[0].urls)
-    renderImage(state.gotData.fetchData.results[1].urls)
-    renderImage(state.gotData.fetchData.results[2].urls)
-    renderImage(state.gotData.fetchData.results[3].urls)
-    renderImage(state.gotData.fetchData.results[4].urls)
-    renderImage(state.gotData.fetchData.results[5].urls)
-    renderImage(state.gotData.fetchData.results[6].urls)
-    renderImage(state.gotData.fetchData.results[7].urls)
-    renderImage(state.gotData.fetchData.results[8].urls)
-    renderImage(state.gotData.fetchData.results[9].urls)
-   
-
+    renderResults(state.gotData.fetchData);
+    clearText()
 }
 // controlSearch()
-async function renderImage(img){
+
+function renderResults(x){
+    x.forEach(renderImage)
+}
+
+function renderImage(img){
     let markup = 
     `
     <p>
-        <img class = "img" src = "${img.full}">
+        <img class = "img" src = "${img.urls.full}">
     </p>
     `
     document.querySelector('.p').insertAdjacentHTML('beforeend', markup)
 }
+
+
 document.querySelector('.search').addEventListener('submit', e =>{
     e.preventDefault()
 })
 document.querySelector('.submit-btn').addEventListener('click', controlSearch);
 
 function clearText(){
-document.querySelector('.text-btn').value = ` `;
+document.querySelector('.text-btn').value = ``;
 }
 function clearImages(){
     document.querySelector('.p').innerHTML = ` `;
